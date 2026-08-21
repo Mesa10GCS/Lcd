@@ -1,6 +1,10 @@
 #include "lcd.h"
 
-int filas_hex[2]={0x00,0x11};
+#define clear_display 0x51
+#define desp_izq 0x49
+#define desp_der 0x4A
+
+int filas_hex[2]={0x00,0x40};
 int char_cond;
 
 void lcd_init(lcd_t*  lcd){
@@ -29,7 +33,7 @@ lcd_send(lcd_t* lcd, uint8_t dato, int char_cmd){
 }
 
 void lcd_clear(lcd_t*lcd){
-    lcd_send(lcd, 0x51, 0);
+    lcd_send(lcd, clear_display, 0);
 }
 
 void lcd_setCursor(lcd_t* lcd, int col, int fil){
@@ -41,4 +45,11 @@ void lcd_print(lcd_t*lcd,char *txt){
         lcd_send(lcd,*txt,1 );
         txt++; 
     }
+}
+
+void lcd_scrollDisplayLeft(lcd_t* lcd){
+    lcd_send(lcd, desp_izq, 0);
+}
+void lcd_scrollDisplayRight(lcd_t* lcd){
+    lcd_send(lcd, desp_der, 0);
 }

@@ -11,11 +11,11 @@ int rs;
 
 void lcd_init(lcd_t*);
 void lcd_clear(lcd_t*);
-void lcd_setCursor(lcd_t*);
-void lcd_print(lcd_t*);
-void lcd_scrollDisplayLeft(lcd_t);
+void lcd_setCursor(lcd_t* lcd, int col, int fil);
+void lcd_print(lcd_t*lcd,char *txt);
+void lcd_scrollDisplayLeft(lcd_t*);
 void lcd_scrollDisplayRight(lcd_t*);
-void lcd_createChar (lcd_t*);
+
 
 
 
